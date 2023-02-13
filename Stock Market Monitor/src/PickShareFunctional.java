@@ -13,9 +13,14 @@ import java.util.stream.Stream;
 import java.math.BigDecimal;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
+
 public class PickShareFunctional {
     public static void main(String[] args) {
+        long startTime = System.currentTimeMillis();
         findHighPriced(Shares.symbols.stream());
+        long endTime = System.currentTimeMillis();
+
+        System.out.println("The execution time of findHighPriced method is:" + (endTime-startTime) + " milliseconds");
     }
     public static ShareInfo findHighPriced(Stream<String> symbols) {
         List<ShareInfo> shares = symbols
