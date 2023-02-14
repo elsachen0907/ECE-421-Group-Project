@@ -20,8 +20,16 @@ public class PickShareFunctional {
         findHighPriced(Shares.symbols.stream());
         long endTime = System.currentTimeMillis();
 
-        System.out.println("The execution time of findHighPriced method is:" + (endTime-startTime) + " milliseconds");
+        System.out.println("The execution time using Stream is:" + (endTime - startTime) + " milliseconds");
+
+        long startTime_parallel = System.currentTimeMillis();
+        findHighPriced(Shares.symbols.parallelStream());
+        long endTime_parallel = System.currentTimeMillis();
+
+        System.out.println("The execution time using Parallel Stream is:" + (endTime_parallel - startTime_parallel) + " milliseconds");
+
     }
+    
     public static ShareInfo findHighPriced(Stream<String> symbols) {
         List<ShareInfo> shares = symbols
            .map(symbol -> new ShareInfo(symbol, APIFinance.getPrice(symbol)))
