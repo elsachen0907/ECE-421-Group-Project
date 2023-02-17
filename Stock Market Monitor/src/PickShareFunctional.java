@@ -17,16 +17,19 @@ import java.util.stream.Collectors;
 public class PickShareFunctional {
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
-        findHighPriced(Shares.symbols.stream());
+        ShareInfo stockInfo = findHighPriced(Shares.symbols.stream());
+        // findHighPriced(Shares.symbols.stream());
         long endTime = System.currentTimeMillis();
 
         System.out.println("The execution time using Stream is:" + (endTime - startTime) + " milliseconds");
+        System.out.println(stockInfo);
 
         long startTime_parallel = System.currentTimeMillis();
-        findHighPriced(Shares.symbols.parallelStream());
+        ShareInfo stockInfoParallel = findHighPriced(Shares.symbols.parallelStream());
         long endTime_parallel = System.currentTimeMillis();
 
         System.out.println("The execution time using Parallel Stream is:" + (endTime_parallel - startTime_parallel) + " milliseconds");
+        System.out.println(stockInfoParallel);
 
     }
     
